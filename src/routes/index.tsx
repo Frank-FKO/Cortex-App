@@ -69,12 +69,12 @@ function Nav() {
           <a href="#testimonials" className="hover:text-foreground transition-colors">Students</a>
         </nav>
         <div className="flex items-center gap-3">
-          <button className="hidden sm:inline-flex text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <Link to="/auth" className="hidden sm:inline-flex text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Sign in
-          </button>
-          <button className="inline-flex items-center gap-1.5 h-10 px-5 rounded-full bg-gradient-primary text-primary-foreground text-sm font-semibold shadow-soft hover:shadow-glow transition-all">
+          </Link>
+          <Link to="/auth" className="inline-flex items-center gap-1.5 h-10 px-5 rounded-full bg-gradient-primary text-primary-foreground text-sm font-semibold shadow-soft hover:shadow-glow transition-all">
             Get Started <ArrowRight className="w-4 h-4" />
-          </button>
+          </Link>
         </div>
       </div>
     </header>
