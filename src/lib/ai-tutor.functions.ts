@@ -30,7 +30,7 @@ export const chatWithTutor = createServerFn({ method: "POST" })
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: data.model ?? "google/gemini-2.5-flash",
+        model: data.model ?? "google/gemma-4-31b-it:free",
         messages: [systemPrompt, ...data.messages],
       }),
     });
