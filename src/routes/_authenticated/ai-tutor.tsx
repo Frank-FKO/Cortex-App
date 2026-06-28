@@ -1,7 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Sparkles, Send, Brain, BookOpen, Lightbulb, ListChecks } from "lucide-react";
+import { Sparkles, Send, Brain, BookOpen, Lightbulb, ListChecks, Loader2 } from "lucide-react";
+import { useServerFn } from "@tanstack/react-start";
+import ReactMarkdown from "react-markdown";
+import { toast } from "sonner";
 import { PageContainer } from "@/lib/page-utils";
+import { chatWithTutor } from "@/lib/ai-tutor.functions";
 
 export const Route = createFileRoute("/_authenticated/ai-tutor")({
   head: () => ({ meta: [{ title: "AI Tutor — Cortex" }] }),
@@ -13,20 +17,25 @@ type Msg = { role: "user" | "assistant"; content: string };
 function AITutor() {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const chat = useServerFn(chatWithTutor);
 
-  const send = (text?: string) => {
+  const send = async (text?: string) => {
     const content = (text ?? input).trim();
-    if (!content) return;
-    setMessages((m) => [
-      ...m,
-      { role: "user", content },
-      {
-        role: "assistant",
-        content:
-          "I'm ready to help! Connect your AI key and I'll start tutoring on any topic — with examples, practice questions and follow-ups tuned to how you learn.",
-      },
-    ]);
+    if (!content || loading) return;
+    const next: Msg[] = [...messages, { role: "user", content }];
+    setMessages(next);
     setInput("");
+    setLoading(true);
+    try {
+      const res = await chat({ data: { messages: next } });
+      setMessages([...next, { role: "assistant", content: res.content || "(no response)" }]);
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : "Failed to reach tutor");
+      setMessages(next);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const suggestions = [
@@ -90,10 +99,26 @@ function AITutor() {
                         : "bg-muted text-foreground"
                     }`}
                   >
-                    {m.content}
+                    {m.role === "assistant" ? (
+                      <div className="prose prose-sm dark:prose-invert max-w-none">
+                        <ReactMarkdown>{m.content}</ReactMarkdown>
+                      </div>
+                    ) : (
+                      m.content
+                    )}
                   </div>
                 </div>
               ))}
+              {loading && (
+                <div className="flex gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-gradient-primary grid place-items-center shrink-0">
+                    <Sparkles className="w-4 h-4 text-primary-foreground" />
+                  </div>
+                  <div className="px-4 py-3 rounded-2xl bg-muted text-muted-foreground flex items-center gap-2">
+                    <Loader2 className="w-4 h-4 animate-spin" /> Thinking…
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -110,14 +135,16 @@ function AITutor() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask Cortex anything…"
-              className="flex-1 bg-transparent outline-none"
+              disabled={loading}
+              className="flex-1 bg-transparent outline-none disabled:opacity-60"
             />
           </div>
           <button
             type="submit"
-            className="h-12 w-12 rounded-2xl bg-gradient-primary text-primary-foreground grid place-items-center shadow-soft hover:shadow-glow transition"
+            disabled={loading}
+            className="h-12 w-12 rounded-2xl bg-gradient-primary text-primary-foreground grid place-items-center shadow-soft hover:shadow-glow transition disabled:opacity-60"
           >
-            <Send className="w-5 h-5" />
+            {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Send className="w-5 h-5" />}
           </button>
         </form>
       </div>
