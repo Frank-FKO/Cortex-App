@@ -12,6 +12,7 @@ import {
   Settings,
   LogOut,
   ListChecks,
+  Users,
 } from "lucide-react";
 import {
   Sidebar,
@@ -33,6 +34,7 @@ const learn = [
   { title: "Subjects", url: "/subjects", icon: BookOpen },
   { title: "Lessons", url: "/lessons", icon: GraduationCap },
   { title: "Quizzes", url: "/quizzes", icon: ListChecks },
+  { title: "Study Rooms", url: "/study-room", icon: Users },
   { title: "Study Planner", url: "/planner", icon: CalendarDays },
 ];
 
