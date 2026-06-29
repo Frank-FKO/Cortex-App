@@ -29,6 +29,9 @@ function AuthenticatedLayout() {
               </div>
               <span className="font-display font-bold">Cortex</span>
             </div>
+            <div className="ml-auto">
+              <ThemeToggle />
+            </div>
           </header>
           <main className="flex-1 overflow-x-hidden">
             <Outlet />
