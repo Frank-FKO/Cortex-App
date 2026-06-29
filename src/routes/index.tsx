@@ -15,6 +15,7 @@ import heroBrain from "@/assets/hero-brain.jpg";
 import studentLearning from "@/assets/student-learning.jpg";
 import featureAdaptive from "@/assets/feature-adaptive.jpg";
 import featureAnalytics from "@/assets/feature-analytics.jpg";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -69,6 +70,7 @@ function Nav() {
           <a href="#testimonials" className="hover:text-foreground transition-colors">Students</a>
         </nav>
         <div className="flex items-center gap-3">
+          <ThemeToggle />
           <Link to="/auth" className="hidden sm:inline-flex text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Sign in
           </Link>

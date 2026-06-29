@@ -3,6 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Brain } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export const Route = createFileRoute("/_authenticated")({
   ssr: false,
@@ -27,6 +28,9 @@ function AuthenticatedLayout() {
                 <Brain className="w-4 h-4 text-primary-foreground" strokeWidth={2.5} />
               </div>
               <span className="font-display font-bold">Cortex</span>
+            </div>
+            <div className="ml-auto">
+              <ThemeToggle />
             </div>
           </header>
           <main className="flex-1 overflow-x-hidden">

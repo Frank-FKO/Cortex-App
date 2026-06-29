@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageContainer, PageHeader } from "@/lib/page-utils";
 import { Bell, Moon, Globe, Shield, LogOut } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { useTheme } from "@/components/theme-provider";
 
 export const Route = createFileRoute("/_authenticated/settings")({
   head: () => ({ meta: [{ title: "Settings — Cortex" }] }),
@@ -9,30 +10,35 @@ export const Route = createFileRoute("/_authenticated/settings")({
 });
 
 function SettingsPage() {
+  const { theme, toggle } = useTheme();
+  const isDark = theme === "dark";
   const groups = [
     {
       icon: Bell,
       title: "Notifications",
       items: [
-        { label: "Daily study reminders", on: true },
-        { label: "Quiz results", on: true },
-        { label: "Leaderboard updates", on: false },
+        { label: "Daily study reminders", on: true, onClick: () => {} },
+        { label: "Quiz results", on: true, onClick: () => {} },
+        { label: "Leaderboard updates", on: false, onClick: () => {} },
       ],
     },
     {
       icon: Moon,
       title: "Appearance",
-      items: [{ label: "Dark mode", on: false }, { label: "Reduced motion", on: false }],
+      items: [
+        { label: "Dark mode", on: isDark, onClick: toggle },
+        { label: "Reduced motion", on: false, onClick: () => {} },
+      ],
     },
     {
       icon: Globe,
       title: "Language & region",
-      items: [{ label: "English (US)", on: true }],
+      items: [{ label: "English (US)", on: true, onClick: () => {} }],
     },
     {
       icon: Shield,
       title: "Privacy",
-      items: [{ label: "Anonymous on leaderboard", on: false }],
+      items: [{ label: "Anonymous on leaderboard", on: false, onClick: () => {} }],
     },
   ];
   return (
@@ -50,7 +56,12 @@ function SettingsPage() {
             </div>
             <div className="space-y-3">
               {g.items.map((it) => (
-                <div key={it.label} className="flex items-center justify-between py-2">
+                <button
+                  type="button"
+                  key={it.label}
+                  onClick={it.onClick}
+                  className="w-full flex items-center justify-between py-2 text-left"
+                >
                   <span className="text-sm">{it.label}</span>
                   <div
                     className={`w-10 h-6 rounded-full p-0.5 transition ${
@@ -63,7 +74,7 @@ function SettingsPage() {
                       }`}
                     />
                   </div>
-                </div>
+                </button>
               ))}
             </div>
           </div>
