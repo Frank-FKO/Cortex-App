@@ -347,6 +347,92 @@ export type Database = {
           },
         ]
       }
+      room_participants: {
+        Row: {
+          display_name: string
+          id: string
+          joined_at: string
+          last_answer_index: number | null
+          last_answered_question: number | null
+          room_id: string
+          score: number
+          user_id: string
+        }
+        Insert: {
+          display_name: string
+          id?: string
+          joined_at?: string
+          last_answer_index?: number | null
+          last_answered_question?: number | null
+          room_id: string
+          score?: number
+          user_id: string
+        }
+        Update: {
+          display_name?: string
+          id?: string
+          joined_at?: string
+          last_answer_index?: number | null
+          last_answered_question?: number | null
+          room_id?: string
+          score?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "room_participants_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: false
+            referencedRelation: "study_rooms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      study_rooms: {
+        Row: {
+          code: string
+          created_at: string
+          current_question: number
+          difficulty: string
+          host_id: string
+          id: string
+          name: string
+          question_started_at: string | null
+          questions: Json
+          status: string
+          topic: string
+          updated_at: string
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          current_question?: number
+          difficulty?: string
+          host_id: string
+          id?: string
+          name: string
+          question_started_at?: string | null
+          questions?: Json
+          status?: string
+          topic: string
+          updated_at?: string
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          current_question?: number
+          difficulty?: string
+          host_id?: string
+          id?: string
+          name?: string
+          question_started_at?: string | null
+          questions?: Json
+          status?: string
+          topic?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       subjects: {
         Row: {
           color: string | null
