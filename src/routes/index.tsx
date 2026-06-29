@@ -15,6 +15,7 @@ import heroBrain from "@/assets/hero-brain.jpg";
 import studentLearning from "@/assets/student-learning.jpg";
 import featureAdaptive from "@/assets/feature-adaptive.jpg";
 import featureAnalytics from "@/assets/feature-analytics.jpg";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export const Route = createFileRoute("/")({
   head: () => ({
