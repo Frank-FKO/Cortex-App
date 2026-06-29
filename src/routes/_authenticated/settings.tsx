@@ -56,7 +56,12 @@ function SettingsPage() {
             </div>
             <div className="space-y-3">
               {g.items.map((it) => (
-                <div key={it.label} className="flex items-center justify-between py-2">
+                <button
+                  type="button"
+                  key={it.label}
+                  onClick={it.onClick}
+                  className="w-full flex items-center justify-between py-2 text-left"
+                >
                   <span className="text-sm">{it.label}</span>
                   <div
                     className={`w-10 h-6 rounded-full p-0.5 transition ${
@@ -69,7 +74,7 @@ function SettingsPage() {
                       }`}
                     />
                   </div>
-                </div>
+                </button>
               ))}
             </div>
           </div>
