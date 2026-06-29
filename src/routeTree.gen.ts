@@ -13,6 +13,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedSubjectsRouteImport } from './routes/_authenticated/subjects'
+import { Route as AuthenticatedStudyRoomRouteImport } from './routes/_authenticated/study-room'
 import { Route as AuthenticatedSettingsRouteImport } from './routes/_authenticated/settings'
 import { Route as AuthenticatedQuizzesRouteImport } from './routes/_authenticated/quizzes'
 import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
@@ -23,6 +24,7 @@ import { Route as AuthenticatedDashboardRouteImport } from './routes/_authentica
 import { Route as AuthenticatedAnalyticsRouteImport } from './routes/_authenticated/analytics'
 import { Route as AuthenticatedAiTutorRouteImport } from './routes/_authenticated/ai-tutor'
 import { Route as AuthenticatedAchievementsRouteImport } from './routes/_authenticated/achievements'
+import { Route as AuthenticatedStudyRoomRoomIdRouteImport } from './routes/_authenticated/study-room.$roomId'
 
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
@@ -41,6 +43,11 @@ const IndexRoute = IndexRouteImport.update({
 const AuthenticatedSubjectsRoute = AuthenticatedSubjectsRouteImport.update({
   id: '/subjects',
   path: '/subjects',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedStudyRoomRoute = AuthenticatedStudyRoomRouteImport.update({
+  id: '/study-room',
+  path: '/study-room',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedSettingsRoute = AuthenticatedSettingsRouteImport.update({
@@ -95,6 +102,12 @@ const AuthenticatedAchievementsRoute =
     path: '/achievements',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedStudyRoomRoomIdRoute =
+  AuthenticatedStudyRoomRoomIdRouteImport.update({
+    id: '/$roomId',
+    path: '/$roomId',
+    getParentRoute: () => AuthenticatedStudyRoomRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -109,7 +122,9 @@ export interface FileRoutesByFullPath {
   '/profile': typeof AuthenticatedProfileRoute
   '/quizzes': typeof AuthenticatedQuizzesRoute
   '/settings': typeof AuthenticatedSettingsRoute
+  '/study-room': typeof AuthenticatedStudyRoomRouteWithChildren
   '/subjects': typeof AuthenticatedSubjectsRoute
+  '/study-room/$roomId': typeof AuthenticatedStudyRoomRoomIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -124,7 +139,9 @@ export interface FileRoutesByTo {
   '/profile': typeof AuthenticatedProfileRoute
   '/quizzes': typeof AuthenticatedQuizzesRoute
   '/settings': typeof AuthenticatedSettingsRoute
+  '/study-room': typeof AuthenticatedStudyRoomRouteWithChildren
   '/subjects': typeof AuthenticatedSubjectsRoute
+  '/study-room/$roomId': typeof AuthenticatedStudyRoomRoomIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -141,7 +158,9 @@ export interface FileRoutesById {
   '/_authenticated/profile': typeof AuthenticatedProfileRoute
   '/_authenticated/quizzes': typeof AuthenticatedQuizzesRoute
   '/_authenticated/settings': typeof AuthenticatedSettingsRoute
+  '/_authenticated/study-room': typeof AuthenticatedStudyRoomRouteWithChildren
   '/_authenticated/subjects': typeof AuthenticatedSubjectsRoute
+  '/_authenticated/study-room/$roomId': typeof AuthenticatedStudyRoomRoomIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -158,7 +177,9 @@ export interface FileRouteTypes {
     | '/profile'
     | '/quizzes'
     | '/settings'
+    | '/study-room'
     | '/subjects'
+    | '/study-room/$roomId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -173,7 +194,9 @@ export interface FileRouteTypes {
     | '/profile'
     | '/quizzes'
     | '/settings'
+    | '/study-room'
     | '/subjects'
+    | '/study-room/$roomId'
   id:
     | '__root__'
     | '/'
@@ -189,7 +212,9 @@ export interface FileRouteTypes {
     | '/_authenticated/profile'
     | '/_authenticated/quizzes'
     | '/_authenticated/settings'
+    | '/_authenticated/study-room'
     | '/_authenticated/subjects'
+    | '/_authenticated/study-room/$roomId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -226,6 +251,13 @@ declare module '@tanstack/react-router' {
       path: '/subjects'
       fullPath: '/subjects'
       preLoaderRoute: typeof AuthenticatedSubjectsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/study-room': {
+      id: '/_authenticated/study-room'
+      path: '/study-room'
+      fullPath: '/study-room'
+      preLoaderRoute: typeof AuthenticatedStudyRoomRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/settings': {
@@ -298,8 +330,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAchievementsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/study-room/$roomId': {
+      id: '/_authenticated/study-room/$roomId'
+      path: '/$roomId'
+      fullPath: '/study-room/$roomId'
+      preLoaderRoute: typeof AuthenticatedStudyRoomRoomIdRouteImport
+      parentRoute: typeof AuthenticatedStudyRoomRoute
+    }
   }
 }
+
+interface AuthenticatedStudyRoomRouteChildren {
+  AuthenticatedStudyRoomRoomIdRoute: typeof AuthenticatedStudyRoomRoomIdRoute
+}
+
+const AuthenticatedStudyRoomRouteChildren: AuthenticatedStudyRoomRouteChildren =
+  {
+    AuthenticatedStudyRoomRoomIdRoute: AuthenticatedStudyRoomRoomIdRoute,
+  }
+
+const AuthenticatedStudyRoomRouteWithChildren =
+  AuthenticatedStudyRoomRoute._addFileChildren(
+    AuthenticatedStudyRoomRouteChildren,
+  )
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedAchievementsRoute: typeof AuthenticatedAchievementsRoute
@@ -312,6 +365,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
   AuthenticatedQuizzesRoute: typeof AuthenticatedQuizzesRoute
   AuthenticatedSettingsRoute: typeof AuthenticatedSettingsRoute
+  AuthenticatedStudyRoomRoute: typeof AuthenticatedStudyRoomRouteWithChildren
   AuthenticatedSubjectsRoute: typeof AuthenticatedSubjectsRoute
 }
 
@@ -326,6 +380,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedProfileRoute: AuthenticatedProfileRoute,
   AuthenticatedQuizzesRoute: AuthenticatedQuizzesRoute,
   AuthenticatedSettingsRoute: AuthenticatedSettingsRoute,
+  AuthenticatedStudyRoomRoute: AuthenticatedStudyRoomRouteWithChildren,
   AuthenticatedSubjectsRoute: AuthenticatedSubjectsRoute,
 }
 

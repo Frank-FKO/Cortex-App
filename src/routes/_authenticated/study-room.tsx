@@ -93,7 +93,7 @@ function StudyRoomPage() {
           name,
           topic,
           difficulty,
-          questions: questions as unknown as object,
+          questions: questions as never,
           status: "lobby",
         })
         .select()
@@ -161,7 +161,7 @@ function StudyRoomPage() {
     <div className="container max-w-6xl py-8 space-y-8">
       <PageHeader
         title="Study Rooms"
-        description="Create a live AI quiz room and invite friends to compete in real time."
+        subtitle="Create a live AI quiz room and invite friends to compete in real time."
       />
 
       <div className="grid md:grid-cols-2 gap-6">
