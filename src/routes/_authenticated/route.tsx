@@ -3,6 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Brain } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export const Route = createFileRoute("/_authenticated")({
   ssr: false,
