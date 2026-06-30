@@ -1,0 +1,10 @@
+# Cortex
+
+> Cortex is an AI-powered adaptive learning companion that personalizes how students study, remember, and master every subject.
+
+Cortex combines a conversational AI tutor, auto-generated quizzes and lessons, spaced-repetition flashcards, and real-time multiplayer study rooms to help learners progress at their own pace.
+
+## Pages
+
+- [Home](/): Overview of Cortex's AI learning companion, features, and how it works.
+- [Sign in](/auth): Create a free account or sign in to start learning.
