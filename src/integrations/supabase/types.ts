@@ -401,6 +401,7 @@ export type Database = {
           questions: Json
           status: string
           topic: string
+          total_questions: number
           updated_at: string
         }
         Insert: {
@@ -415,6 +416,7 @@ export type Database = {
           questions?: Json
           status?: string
           topic: string
+          total_questions?: number
           updated_at?: string
         }
         Update: {
@@ -429,6 +431,7 @@ export type Database = {
           questions?: Json
           status?: string
           topic?: string
+          total_questions?: number
           updated_at?: string
         }
         Relationships: []
@@ -500,7 +503,11 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_active_room_question: { Args: { p_room_id: string }; Returns: Json }
+      submit_room_answer: {
+        Args: { p_answer_index: number; p_room_id: string }
+        Returns: Json
+      }
     }
     Enums: {
       ai_message_role: "user" | "assistant" | "system"

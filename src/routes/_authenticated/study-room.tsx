@@ -53,7 +53,7 @@ function StudyRoomPage() {
     setLoading(true);
     const { data } = await supabase
       .from("study_rooms")
-      .select("*")
+      .select("id, code, name, topic, status, host_id, created_at")
       .in("status", ["lobby", "active"])
       .order("created_at", { ascending: false })
       .limit(30);
@@ -123,7 +123,7 @@ function StudyRoomPage() {
     try {
       const { data: room, error } = await supabase
         .from("study_rooms")
-        .select("*")
+        .select("id")
         .eq("code", joinCode.trim().toUpperCase())
         .maybeSingle();
       if (error) throw error;
