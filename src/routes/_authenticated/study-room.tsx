@@ -13,6 +13,13 @@ import { toast } from "sonner";
 import { Loader2, Users, Plus, LogIn, Trash2 } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/study-room")({
+  head: () => ({
+    meta: [
+      { title: "Study Rooms — Cortex" },
+      { name: "description", content: "Create or join real-time multiplayer AI quiz rooms with friends." },
+      { name: "robots", content: "noindex,nofollow" },
+    ],
+  }),
   component: StudyRoomPage,
   errorComponent: ({ error }) => <div className="p-6 text-destructive">Error: {error.message}</div>,
   notFoundComponent: () => <div className="p-6">Not found</div>,
