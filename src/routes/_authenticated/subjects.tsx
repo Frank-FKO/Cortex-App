@@ -5,7 +5,7 @@ import { PageContainer, PageHeader } from "@/lib/page-utils";
 import { ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/subjects")({
-  head: () => ({ meta: [{ title: "Subjects — Cortex" }] }),
+  head: () => ({ meta: [{ title: "Subjects — Cortex" }, { name: "description", content: "Browse subjects and track your mastery across the Cortex catalog." }, { name: "robots", content: "noindex,nofollow" }] }),
   component: SubjectsPage,
 });
 

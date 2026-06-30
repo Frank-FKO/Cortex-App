@@ -4,7 +4,7 @@ import { TrendingUp, Brain, Flame, Clock } from "lucide-react";
 import { LineChart, Line, ResponsiveContainer, XAxis, YAxis, Tooltip, BarChart, Bar, CartesianGrid } from "recharts";
 
 export const Route = createFileRoute("/_authenticated/analytics")({
-  head: () => ({ meta: [{ title: "Analytics — Cortex" }] }),
+  head: () => ({ meta: [{ title: "Analytics — Cortex" }, { name: "description", content: "Visualize study minutes, subject mastery, and weekly progress trends." }, { name: "robots", content: "noindex,nofollow" }] }),
   component: AnalyticsPage,
 });
 

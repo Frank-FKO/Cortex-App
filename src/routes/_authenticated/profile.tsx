@@ -7,7 +7,7 @@ import { Save, Sparkles, Flame, Trophy } from "lucide-react";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/_authenticated/profile")({
-  head: () => ({ meta: [{ title: "Profile — Cortex" }] }),
+  head: () => ({ meta: [{ title: "Profile — Cortex" }, { name: "description", content: "Update your display name, school level, and learning preferences." }, { name: "robots", content: "noindex,nofollow" }] }),
   component: ProfilePage,
 });
 

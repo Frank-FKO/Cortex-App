@@ -8,7 +8,7 @@ import { PageContainer } from "@/lib/page-utils";
 import { chatWithTutor } from "@/lib/ai-tutor.functions";
 
 export const Route = createFileRoute("/_authenticated/ai-tutor")({
-  head: () => ({ meta: [{ title: "AI Tutor — Cortex" }] }),
+  head: () => ({ meta: [{ title: "AI Tutor — Cortex" }, { name: "description", content: "Chat with your AI tutor for step-by-step explanations on any subject." }, { name: "robots", content: "noindex,nofollow" }] }),
   component: AITutor,
 });
 

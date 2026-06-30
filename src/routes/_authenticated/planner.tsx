@@ -3,7 +3,7 @@ import { PageContainer, PageHeader } from "@/lib/page-utils";
 import { CalendarDays, Plus } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/planner")({
-  head: () => ({ meta: [{ title: "Study Planner — Cortex" }] }),
+  head: () => ({ meta: [{ title: "Study Planner — Cortex" }, { name: "description", content: "Plan your week with AI-suggested lessons and quiz sessions." }, { name: "robots", content: "noindex,nofollow" }] }),
   component: PlannerPage,
 });
 

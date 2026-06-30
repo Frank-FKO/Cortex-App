@@ -5,7 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useTheme } from "@/components/theme-provider";
 
 export const Route = createFileRoute("/_authenticated/settings")({
-  head: () => ({ meta: [{ title: "Settings — Cortex" }] }),
+  head: () => ({ meta: [{ title: "Settings — Cortex" }, { name: "description", content: "Manage notifications, appearance, and privacy for your Cortex account." }, { name: "robots", content: "noindex,nofollow" }] }),
   component: SettingsPage,
 });
 

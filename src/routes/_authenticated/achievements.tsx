@@ -3,7 +3,7 @@ import { PageContainer, PageHeader } from "@/lib/page-utils";
 import { Award, Flame, Brain, Trophy, Star, Target, Zap, BookOpen } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/achievements")({
-  head: () => ({ meta: [{ title: "Achievements — Cortex" }] }),
+  head: () => ({ meta: [{ title: "Achievements — Cortex" }, { name: "description", content: "Unlock badges and milestones as you build study streaks on Cortex." }, { name: "robots", content: "noindex,nofollow" }] }),
   component: AchievementsPage,
 });
 
