@@ -5,7 +5,7 @@ import { PageContainer, PageHeader } from "@/lib/page-utils";
 import { ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/subjects")({
-  head: () => ({ meta: [{ title: "Subjects — Cortex" }, { name: "description", content: "Browse subjects and track your mastery across the Cortex catalog." }, { name: "robots", content: "noindex,nofollow" }] }),
+  head: () => ({ meta: [{ title: "Subjects — coretex" }, { name: "description", content: "Browse subjects and track your mastery across the coretex catalog." }, { name: "robots", content: "noindex,nofollow" }] }),
   component: SubjectsPage,
 });
 
@@ -22,7 +22,7 @@ function SubjectsPage() {
     <PageContainer>
       <PageHeader
         title="Subjects"
-        subtitle="Pick a subject to start learning. Cortex adapts to your level automatically."
+        subtitle="Pick a subject to start learning. coretex adapts to your level automatically."
       />
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">

@@ -7,7 +7,7 @@ import { Save, Sparkles, Flame, Trophy } from "lucide-react";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/_authenticated/profile")({
-  head: () => ({ meta: [{ title: "Profile — Cortex" }, { name: "description", content: "Update your display name, school level, and learning preferences." }, { name: "robots", content: "noindex,nofollow" }] }),
+  head: () => ({ meta: [{ title: "Profile — coretex" }, { name: "description", content: "Update your display name, school level, and learning preferences." }, { name: "robots", content: "noindex,nofollow" }] }),
   component: ProfilePage,
 });
 
@@ -48,7 +48,7 @@ function ProfilePage() {
 
   return (
     <PageContainer>
-      <PageHeader title="Profile" subtitle="How Cortex knows you." />
+      <PageHeader title="Profile" subtitle="How coretex knows you." />
 
       <div className="grid lg:grid-cols-3 gap-6">
         <div className="rounded-3xl bg-gradient-primary text-primary-foreground p-8 shadow-soft">

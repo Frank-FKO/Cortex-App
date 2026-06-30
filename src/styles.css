@@ -42,7 +42,7 @@
 :root {
   --radius: 1rem;
 
-  /* Cortex palette — Premium purple/blue/cyan */
+  /* coretex palette — Premium purple/blue/cyan */
   --background: oklch(0.99 0.005 280);
   --foreground: oklch(0.18 0.04 270);
 

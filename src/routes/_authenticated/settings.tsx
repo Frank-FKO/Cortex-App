@@ -5,7 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useTheme } from "@/components/theme-provider";
 
 export const Route = createFileRoute("/_authenticated/settings")({
-  head: () => ({ meta: [{ title: "Settings — Cortex" }, { name: "description", content: "Manage notifications, appearance, and privacy for your Cortex account." }, { name: "robots", content: "noindex,nofollow" }] }),
+  head: () => ({ meta: [{ title: "Settings — coretex" }, { name: "description", content: "Manage notifications, appearance, and privacy for your coretex account." }, { name: "robots", content: "noindex,nofollow" }] }),
   component: SettingsPage,
 });
 
@@ -43,7 +43,7 @@ function SettingsPage() {
   ];
   return (
     <PageContainer>
-      <PageHeader title="Settings" subtitle="Make Cortex feel like yours." />
+      <PageHeader title="Settings" subtitle="Make coretex feel like yours." />
 
       <div className="grid md:grid-cols-2 gap-5 mb-8">
         {groups.map((g) => (
