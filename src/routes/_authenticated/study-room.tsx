@@ -123,7 +123,7 @@ function StudyRoomPage() {
     try {
       const { data: room, error } = await supabase
         .from("study_rooms")
-        .select("*")
+        .select("id")
         .eq("code", joinCode.trim().toUpperCase())
         .maybeSingle();
       if (error) throw error;
