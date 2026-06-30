@@ -8,7 +8,7 @@ import { PageContainer } from "@/lib/page-utils";
 import { chatWithTutor } from "@/lib/ai-tutor.functions";
 
 export const Route = createFileRoute("/_authenticated/ai-tutor")({
-  head: () => ({ meta: [{ title: "AI Tutor — Cortex" }] }),
+  head: () => ({ meta: [{ title: "AI Tutor — Cortex" }, { name: "description", content: "Chat with your AI tutor for step-by-step explanations on any subject." }, { name: "robots", content: "noindex,nofollow" }] }),
   component: AITutor,
 });
 
@@ -135,12 +135,14 @@ function AITutor() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask Cortex anything…"
+              aria-label="Ask Cortex a question"
               disabled={loading}
               className="flex-1 bg-transparent outline-none disabled:opacity-60"
             />
           </div>
           <button
             type="submit"
+            aria-label="Send message"
             disabled={loading}
             className="h-12 w-12 rounded-2xl bg-gradient-primary text-primary-foreground grid place-items-center shadow-soft hover:shadow-glow transition disabled:opacity-60"
           >

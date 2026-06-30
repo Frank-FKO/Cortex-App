@@ -5,7 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { PageContainer, PageHeader, StatCard } from "@/lib/page-utils";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
-  head: () => ({ meta: [{ title: "Dashboard — Cortex" }] }),
+  head: () => ({ meta: [{ title: "Dashboard — Cortex" }, { name: "description", content: "Your daily learning hub: XP, streaks, AI tutor, and next lessons." }, { name: "robots", content: "noindex,nofollow" }] }),
   component: Dashboard,
 });
 

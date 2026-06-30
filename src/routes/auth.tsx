@@ -8,9 +8,14 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "Sign in — Cortex" },
-      { name: "description", content: "Sign in to your Cortex AI learning account." },
+      { title: "Sign in or create your Cortex account" },
+      { name: "description", content: "Sign in or create your free Cortex account to start learning with your personal AI tutor." },
+      { property: "og:title", content: "Sign in to Cortex" },
+      { property: "og:description", content: "Access your AI tutor, quizzes, and study planner on Cortex." },
+      { property: "og:url", content: "https://aicoretex.lovable.app/auth" },
+      { name: "robots", content: "noindex,follow" },
     ],
+    links: [{ rel: "canonical", href: "https://aicoretex.lovable.app/auth" }],
   }),
   component: AuthPage,
 });

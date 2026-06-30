@@ -5,7 +5,7 @@ import { PageContainer, PageHeader, EmptyState } from "@/lib/page-utils";
 import { GraduationCap, Plus, CheckCircle2, Clock } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/lessons")({
-  head: () => ({ meta: [{ title: "Lessons — Cortex" }] }),
+  head: () => ({ meta: [{ title: "Lessons — Cortex" }, { name: "description", content: "AI-generated lessons tailored to your subjects and learning pace." }, { name: "robots", content: "noindex,nofollow" }] }),
   component: LessonsPage,
 });
 

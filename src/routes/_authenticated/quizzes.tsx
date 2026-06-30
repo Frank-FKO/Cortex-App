@@ -18,7 +18,7 @@ import {
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/_authenticated/quizzes")({
-  head: () => ({ meta: [{ title: "Quizzes — Cortex" }] }),
+  head: () => ({ meta: [{ title: "Quizzes — Cortex" }, { name: "description", content: "Generate AI quizzes on any topic and review past attempts." }, { name: "robots", content: "noindex,nofollow" }] }),
   component: QuizzesPage,
 });
 
