@@ -1,5 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -16,8 +16,8 @@ export const Route = createFileRoute("/_authenticated/study-room/$roomId")({
 type Question = {
   question: string;
   options: string[];
-  correct_index: number;
-  explanation: string;
+  correct_index?: number;
+  explanation?: string;
 };
 type Room = {
   id: string;
@@ -26,8 +26,8 @@ type Room = {
   topic: string;
   status: "lobby" | "active" | "finished";
   host_id: string;
-  questions: Question[];
   current_question: number;
+  total_questions: number;
 };
 type Participant = {
   id: string;
@@ -45,43 +45,61 @@ function RoomPage() {
   const [participants, setParticipants] = useState<Participant[]>([]);
   const [userId, setUserId] = useState<string | null>(null);
   const [picked, setPicked] = useState<number | null>(null);
+  const [current, setCurrent] = useState<Question | null>(null);
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => setUserId(data.user?.id ?? null));
   }, []);
 
-  async function loadRoom() {
-    const { data } = await supabase.from("study_rooms").select("*").eq("id", roomId).maybeSingle();
+  const loadRoom = useCallback(async () => {
+    const { data } = await supabase
+      .from("study_rooms")
+      .select("id, code, name, topic, status, host_id, current_question, total_questions")
+      .eq("id", roomId)
+      .maybeSingle();
     if (data) setRoom(data as unknown as Room);
-  }
-  async function loadParticipants() {
-    const { data } = await supabase.from("room_participants").select("*").eq("room_id", roomId).order("score", { ascending: false });
+  }, [roomId]);
+
+  const loadParticipants = useCallback(async () => {
+    const { data } = await supabase
+      .from("room_participants")
+      .select("*")
+      .eq("room_id", roomId)
+      .order("score", { ascending: false });
     setParticipants((data as Participant[]) ?? []);
-  }
+  }, [roomId]);
+
+  const loadQuestion = useCallback(async () => {
+    const { data, error } = await supabase.rpc("get_active_room_question", { p_room_id: roomId });
+    if (error) return;
+    setCurrent((data as Question | null) ?? null);
+  }, [roomId]);
 
   useEffect(() => {
     loadRoom();
     loadParticipants();
+    loadQuestion();
     const ch = supabase
       .channel(`room-${roomId}`)
-      .on("postgres_changes", { event: "*", schema: "public", table: "study_rooms", filter: `id=eq.${roomId}` }, loadRoom)
+      .on("postgres_changes", { event: "*", schema: "public", table: "study_rooms", filter: `id=eq.${roomId}` }, () => {
+        loadRoom();
+        loadQuestion();
+      })
       .on("postgres_changes", { event: "*", schema: "public", table: "room_participants", filter: `room_id=eq.${roomId}` }, loadParticipants)
       .subscribe();
     return () => {
       supabase.removeChannel(ch);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [roomId]);
+  }, [roomId, loadRoom, loadParticipants, loadQuestion]);
 
   // Reset picked answer when question changes
   useEffect(() => {
     setPicked(null);
   }, [room?.current_question, room?.status]);
 
-  const isHost = room && userId && room.host_id === userId;
+  const isHost = !!(room && userId && room.host_id === userId);
   const me = useMemo(() => participants.find((p) => p.user_id === userId), [participants, userId]);
-  const current: Question | undefined = room?.questions?.[room.current_question];
-  const answeredThis = me && me.last_answered_question === room?.current_question;
+  const answeredThis = !!(me && me.last_answered_question === room?.current_question);
 
   async function startQuiz() {
     if (!room) return;
@@ -95,7 +113,7 @@ function RoomPage() {
   async function nextQuestion() {
     if (!room) return;
     const next = room.current_question + 1;
-    if (next >= room.questions.length) {
+    if (next >= room.total_questions) {
       await supabase.from("study_rooms").update({ status: "finished" }).eq("id", room.id);
     } else {
       await supabase
@@ -108,17 +126,18 @@ function RoomPage() {
   async function submitAnswer(idx: number) {
     if (!room || !current || !me || answeredThis) return;
     setPicked(idx);
-    const isCorrect = idx === current.correct_index;
-    const newScore = me.score + (isCorrect ? 100 : 0);
-    const { error } = await supabase
-      .from("room_participants")
-      .update({
-        last_answer_index: idx,
-        last_answered_question: room.current_question,
-        score: newScore,
-      })
-      .eq("id", me.id);
-    if (error) toast.error(error.message);
+    const { error } = await supabase.rpc("submit_room_answer", {
+      p_room_id: room.id,
+      p_answer_index: idx,
+    });
+    if (error) {
+      toast.error(error.message);
+      setPicked(null);
+      return;
+    }
+    // Refresh to get explanation/correct_index now that user has answered
+    loadQuestion();
+    loadParticipants();
   }
 
   async function leave() {
@@ -136,7 +155,7 @@ function RoomPage() {
     return <div className="flex items-center justify-center p-12"><Loader2 className="h-6 w-6 animate-spin" /></div>;
   }
 
-  const totalQ = room.questions.length;
+  const totalQ = room.total_questions;
   const answeredCount = participants.filter((p) => p.last_answered_question === room.current_question).length;
 
   return (
@@ -187,13 +206,13 @@ function RoomPage() {
               </CardHeader>
               <CardContent className="space-y-2">
                 {current.options.map((opt, i) => {
-                  const showResult = answeredThis;
+                  const showResult = answeredThis && current.correct_index !== undefined;
                   const correct = i === current.correct_index;
                   const chosen = (picked ?? me?.last_answer_index) === i;
                   return (
                     <button
                       key={i}
-                      disabled={!!answeredThis}
+                      disabled={answeredThis}
                       onClick={() => submitAnswer(i)}
                       className={`w-full text-left p-3 rounded-lg border-2 transition flex items-center gap-3
                         ${showResult && correct ? "border-green-500 bg-green-500/10" : ""}
@@ -209,7 +228,7 @@ function RoomPage() {
                     </button>
                   );
                 })}
-                {answeredThis && (
+                {answeredThis && current.explanation && (
                   <div className="text-sm text-muted-foreground bg-muted p-3 rounded mt-3">
                     <strong>Explanation:</strong> {current.explanation}
                   </div>
