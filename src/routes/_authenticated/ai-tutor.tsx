@@ -135,12 +135,14 @@ function AITutor() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask Cortex anything…"
+              aria-label="Ask Cortex a question"
               disabled={loading}
               className="flex-1 bg-transparent outline-none disabled:opacity-60"
             />
           </div>
           <button
             type="submit"
+            aria-label="Send message"
             disabled={loading}
             className="h-12 w-12 rounded-2xl bg-gradient-primary text-primary-foreground grid place-items-center shadow-soft hover:shadow-glow transition disabled:opacity-60"
           >
