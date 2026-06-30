@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aicoretex.lovable.app/sitemap.xml
