@@ -18,7 +18,7 @@ import {
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/_authenticated/quizzes")({
-  head: () => ({ meta: [{ title: "Quizzes — Cortex" }, { name: "description", content: "Generate AI quizzes on any topic and review past attempts." }, { name: "robots", content: "noindex,nofollow" }] }),
+  head: () => ({ meta: [{ title: "Quizzes — coretex" }, { name: "description", content: "Generate AI quizzes on any topic and review past attempts." }, { name: "robots", content: "noindex,nofollow" }] }),
   component: QuizzesPage,
 });
 
@@ -125,7 +125,7 @@ function QuizzesPage() {
     <PageContainer>
       <PageHeader
         title="Quizzes"
-        subtitle="Tell Cortex what you want to be tested on — get a tailored quiz in seconds."
+        subtitle="Tell coretex what you want to be tested on — get a tailored quiz in seconds."
         action={
           phase !== "setup" ? (
             <button
@@ -166,7 +166,7 @@ function QuizzesPage() {
             <div>
               <h2 className="text-lg font-bold">Generate a quiz</h2>
               <p className="text-sm text-muted-foreground">
-                Enter a topic, pick difficulty, and Cortex will craft questions for you.
+                Enter a topic, pick difficulty, and coretex will craft questions for you.
               </p>
             </div>
           </div>

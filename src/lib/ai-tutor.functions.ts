@@ -20,7 +20,7 @@ export const chatWithTutor = createServerFn({ method: "POST" })
     const systemPrompt = {
       role: "system" as const,
       content:
-        "You are Cortex, a friendly adaptive AI tutor for students. Explain concepts clearly with examples, use markdown, ask follow-up questions, and adapt to the learner's level.",
+        "You are coretex, a friendly adaptive AI tutor for students. Explain concepts clearly with examples, use markdown, ask follow-up questions, and adapt to the learner's level.",
     };
 
     const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
