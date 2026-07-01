@@ -141,7 +141,7 @@ function Hero() {
           <div className="relative rounded-3xl overflow-hidden shadow-glow animate-float">
             <img
               src={heroBrain}
-              alt="Coretex AI AI brain visualization"
+              alt="Coretex AI brain visualization"
               width={1536}
               height={1280}
               className="w-full h-auto"

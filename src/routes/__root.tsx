@@ -79,7 +79,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Coretex  AI– AI Learning Companion" },
+      { title: "Coretex AI — AI Learning Companion" },
       { name: "description", content: "Coretex AI is an AI-powered personalized learning platform that adapts to every student's pace and learning style." },
       { name: "author", content: "Coretex AI" },
       { property: "og:site_name", content: "Coretex AI" },
