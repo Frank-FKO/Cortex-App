@@ -5,7 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { PageContainer, PageHeader, StatCard } from "@/lib/page-utils";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
-  head: () => ({ meta: [{ title: "Dashboard — coretex" }, { name: "description", content: "Your daily learning hub: XP, streaks, AI tutor, and next lessons." }, { name: "robots", content: "noindex,nofollow" }] }),
+  head: () => ({ meta: [{ title: "Dashboard — Coretex AI" }, { name: "description", content: "Your daily learning hub: XP, streaks, AI tutor, and next lessons." }, { name: "robots", content: "noindex,nofollow" }] }),
   component: Dashboard,
 });
 
@@ -47,7 +47,7 @@ function Dashboard() {
           <div className="rounded-3xl bg-gradient-primary p-8 text-primary-foreground relative overflow-hidden shadow-soft">
             <div className="absolute -right-10 -top-10 w-48 h-48 bg-white/15 rounded-full blur-3xl" />
             <Sparkles className="w-6 h-6 mb-3" />
-            <h2 className="font-display text-2xl font-bold mb-2">Ask coretex anything</h2>
+            <h2 className="font-display text-2xl font-bold mb-2">Ask Coretex AI anything</h2>
             <p className="text-primary-foreground/85 mb-5 max-w-md">
               Stuck on a concept? Need a quick example? Your AI tutor is one tap away.
             </p>
