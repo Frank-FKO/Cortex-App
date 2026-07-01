@@ -3,7 +3,7 @@ import { PageContainer, PageHeader } from "@/lib/page-utils";
 import { Trophy, Crown, Medal } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/leaderboard")({
-  head: () => ({ meta: [{ title: "Leaderboard — coretex" }, { name: "description", content: "See how you rank against other learners on coretex this week." }, { name: "robots", content: "noindex,nofollow" }] }),
+  head: () => ({ meta: [{ title: "Leaderboard — Coretex AI" }, { name: "description", content: "See how you rank against other learners on Coretex AI this week." }, { name: "robots", content: "noindex,nofollow" }] }),
   component: LeaderboardPage,
 });
 

@@ -3,7 +3,7 @@ import { PageContainer, PageHeader } from "@/lib/page-utils";
 import { CalendarDays, Plus } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/planner")({
-  head: () => ({ meta: [{ title: "Study Planner — coretex" }, { name: "description", content: "Plan your week with AI-suggested lessons and quiz sessions." }, { name: "robots", content: "noindex,nofollow" }] }),
+  head: () => ({ meta: [{ title: "Study Planner — Coretex AI" }, { name: "description", content: "Plan your week with AI-suggested lessons and quiz sessions." }, { name: "robots", content: "noindex,nofollow" }] }),
   component: PlannerPage,
 });
 
@@ -14,7 +14,7 @@ function PlannerPage() {
     <PageContainer>
       <PageHeader
         title="Study Planner"
-        subtitle="coretex builds a plan around your goals, exam dates, and how you learn."
+        subtitle="Coretex AI builds a plan around your goals, exam dates, and how you learn."
         action={
           <button className="inline-flex items-center gap-2 h-10 px-5 rounded-full bg-gradient-primary text-primary-foreground text-sm font-semibold shadow-soft hover:shadow-glow transition">
             <Plus className="w-4 h-4" /> New plan

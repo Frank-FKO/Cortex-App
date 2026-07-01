@@ -8,10 +8,10 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "Sign in or create your coretex account" },
-      { name: "description", content: "Sign in or create your free coretex account to start learning with your personal AI tutor." },
-      { property: "og:title", content: "Sign in to coretex" },
-      { property: "og:description", content: "Access your AI tutor, quizzes, and study planner on coretex." },
+      { title: "Sign in or create your Coretex AI account" },
+      { name: "description", content: "Sign in or create your free Coretex AI account to start learning with your personal AI tutor." },
+      { property: "og:title", content: "Sign in to Coretex AI" },
+      { property: "og:description", content: "Access your AI tutor, quizzes, and study planner on Coretex AI." },
       { property: "og:url", content: "https://aicoretex.lovable.app/auth" },
       { name: "robots", content: "noindex,follow" },
     ],
@@ -88,7 +88,7 @@ function AuthPage() {
           <div className="w-10 h-10 rounded-xl bg-white/15 backdrop-blur grid place-items-center">
             <Brain className="w-5 h-5" strokeWidth={2.5} />
           </div>
-          <span className="font-display font-bold text-xl">coretex</span>
+          <span className="font-display font-bold text-xl">Coretex AI</span>
         </Link>
         <div className="relative text-primary-foreground">
           <Sparkles className="w-8 h-8 mb-6 opacity-80" />
@@ -99,7 +99,7 @@ function AuthPage() {
             Adaptive lessons, spaced repetition, and a tutor that knows how you learn.
           </p>
         </div>
-        <div className="relative text-primary-foreground/70 text-sm">© 2026 coretex</div>
+        <div className="relative text-primary-foreground/70 text-sm">© 2026 Coretex AI</div>
       </div>
 
       {/* Right form panel */}
@@ -109,7 +109,7 @@ function AuthPage() {
             <div className="w-9 h-9 rounded-xl bg-gradient-primary grid place-items-center">
               <Brain className="w-5 h-5 text-primary-foreground" strokeWidth={2.5} />
             </div>
-            <span className="font-display font-bold text-xl">coretex</span>
+            <span className="font-display font-bold text-xl">Coretex AI</span>
           </Link>
 
           <h1 className="text-3xl font-bold mb-2">
@@ -187,7 +187,7 @@ function AuthPage() {
           </form>
 
           <p className="text-sm text-muted-foreground text-center mt-6">
-            {mode === "signin" ? "New to coretex?" : "Already have an account?"}{" "}
+            {mode === "signin" ? "New to Coretex AI?" : "Already have an account?"}{" "}
             <button
               type="button"
               onClick={() => setMode(mode === "signin" ? "signup" : "signin")}

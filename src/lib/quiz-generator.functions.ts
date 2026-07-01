@@ -56,7 +56,7 @@ Rules:
           {
             role: "system",
             content:
-              "You are coretex Quiz Maker, an expert educator that produces high-quality multiple-choice quizzes. You always return strict JSON only.",
+              "You are Coretex AI Quiz Maker, an expert educator that produces high-quality multiple-choice quizzes. You always return strict JSON only.",
           },
           { role: "user", content: prompt },
         ],

@@ -3,7 +3,7 @@ import { PageContainer, PageHeader } from "@/lib/page-utils";
 import { Award, Flame, Brain, Trophy, Star, Target, Zap, BookOpen } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/achievements")({
-  head: () => ({ meta: [{ title: "Achievements — coretex" }, { name: "description", content: "Unlock badges and milestones as you build study streaks on coretex." }, { name: "robots", content: "noindex,nofollow" }] }),
+  head: () => ({ meta: [{ title: "Achievements — Coretex AI" }, { name: "description", content: "Unlock badges and milestones as you build study streaks on Coretex AI." }, { name: "robots", content: "noindex,nofollow" }] }),
   component: AchievementsPage,
 });
 
@@ -15,7 +15,7 @@ const badges = [
   { icon: Target, title: "Sharp Shooter", desc: "10 quizzes above 80%", unlocked: false },
   { icon: Zap, title: "On Fire", desc: "7-day streak", unlocked: false },
   { icon: BookOpen, title: "Bookworm", desc: "Read 25 lessons", unlocked: false },
-  { icon: Award, title: "coretex Master", desc: "Reach Level 20", unlocked: false },
+  { icon: Award, title: "Coretex AI Master", desc: "Reach Level 20", unlocked: false },
 ];
 
 function AchievementsPage() {

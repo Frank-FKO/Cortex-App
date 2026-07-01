@@ -15,7 +15,7 @@ import { Loader2, Users, Plus, LogIn, Trash2 } from "lucide-react";
 export const Route = createFileRoute("/_authenticated/study-room")({
   head: () => ({
     meta: [
-      { title: "Study Rooms — coretex" },
+      { title: "Study Rooms — Coretex AI" },
       { name: "description", content: "Create or join real-time multiplayer AI quiz rooms with friends." },
       { name: "robots", content: "noindex,nofollow" },
     ],

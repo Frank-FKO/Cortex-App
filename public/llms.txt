@@ -1,10 +1,10 @@
-# coretex
+# Coretex AI
 
-> coretex is an AI-powered adaptive learning companion that personalizes how students study, remember, and master every subject.
+> Coretex AI is an AI-powered adaptive learning companion that personalizes how students study, remember, and master every subject.
 
-coretex combines a conversational AI tutor, auto-generated quizzes and lessons, spaced-repetition flashcards, and real-time multiplayer study rooms to help learners progress at their own pace.
+Coretex AI combines a conversational AI tutor, auto-generated quizzes and lessons, spaced-repetition flashcards, and real-time multiplayer study rooms to help learners progress at their own pace.
 
 ## Pages
 
-- [Home](/): Overview of coretex's AI learning companion, features, and how it works.
+- [Home](/): Overview of Coretex AI's AI learning companion, features, and how it works.
 - [Sign in](/auth): Create a free account or sign in to start learning.
