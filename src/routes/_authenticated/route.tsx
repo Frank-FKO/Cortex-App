@@ -27,7 +27,7 @@ function AuthenticatedLayout() {
               <div className="w-7 h-7 rounded-lg bg-gradient-primary grid place-items-center">
                 <Brain className="w-4 h-4 text-primary-foreground" strokeWidth={2.5} />
               </div>
-              <span className="font-display font-bold">coretex</span>
+              <span className="font-display font-bold">Coretex AI</span>
             </div>
             <div className="ml-auto">
               <ThemeToggle />

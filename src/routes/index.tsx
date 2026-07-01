@@ -20,13 +20,13 @@ import { ThemeToggle } from "@/components/theme-toggle";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "coretex — Your AI Learning Companion" },
+      { title: "Coretex AI — Your AI Learning Companion" },
       {
         name: "description",
         content:
-          "coretex is an AI-powered adaptive learning platform that personalizes how you study, remember, and master every subject.",
+          "Coretex AI is an AI-powered adaptive learning platform that personalizes how you study, remember, and master every subject.",
       },
-      { property: "og:title", content: "coretex — Your AI Learning Companion" },
+      { property: "og:title", content: "Coretex AI — Your AI Learning Companion" },
       {
         property: "og:description",
         content:
@@ -35,7 +35,7 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://aicoretex.lovable.app/" },
       { property: "og:image", content: "https://aicoretex.lovable.app/og-image.jpg" },
-      { name: "twitter:title", content: "coretex — Your AI Learning Companion" },
+      { name: "twitter:title", content: "Coretex AI — Your AI Learning Companion" },
       { name: "twitter:description", content: "A personal AI tutor that adapts to your pace, memory, and learning style." },
       { name: "twitter:image", content: "https://aicoretex.lovable.app/og-image.jpg" },
     ],
@@ -46,9 +46,9 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Product",
-          name: "coretex",
+          name: "Coretex AI",
           description: "AI-powered adaptive learning companion with personalized tutoring, quizzes, lessons, and spaced repetition.",
-          brand: { "@type": "Brand", name: "coretex" },
+          brand: { "@type": "Brand", name: "Coretex AI" },
           url: "https://aicoretex.lovable.app/",
         }),
       },
@@ -81,7 +81,7 @@ function Nav() {
           <div className="w-9 h-9 rounded-xl bg-gradient-primary grid place-items-center shadow-glow">
             <Brain className="w-5 h-5 text-primary-foreground" strokeWidth={2.5} />
           </div>
-          <span className="font-display font-bold text-xl">coretex</span>
+          <span className="font-display font-bold text-xl">Coretex AI</span>
         </Link>
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
           <a href="#features" className="hover:text-foreground transition-colors">Features</a>
@@ -120,7 +120,7 @@ function Hero() {
             Learning that <span className="text-gradient">thinks</span> the way you do.
           </h1>
           <p className="text-lg text-muted-foreground max-w-xl mb-8 leading-relaxed">
-            coretex is your personal AI tutor — it adapts to your pace, remembers what you forget, and turns
+            Coretex AI is your personal AI tutor — it adapts to your pace, remembers what you forget, and turns
             studying into something that actually sticks. Not another chatbot. An intelligent learning companion.
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
@@ -141,7 +141,7 @@ function Hero() {
           <div className="relative rounded-3xl overflow-hidden shadow-glow animate-float">
             <img
               src={heroBrain}
-              alt="coretex AI brain visualization"
+              alt="Coretex AI AI brain visualization"
               width={1536}
               height={1280}
               className="w-full h-auto"
@@ -199,11 +199,11 @@ function Logos() {
 function Features() {
   const features = [
     { icon: Brain, title: "Adaptive AI Tutor", desc: "Explains concepts your way — visual, verbal, or step-by-step. Asks again until it sticks." },
-    { icon: Target, title: "Spaced Repetition", desc: "coretex knows when you'll forget, and brings it back at exactly the right moment." },
+    { icon: Target, title: "Spaced Repetition", desc: "Coretex AI knows when you'll forget, and brings it back at exactly the right moment." },
     { icon: TrendingUp, title: "Living Analytics", desc: "See your strengths, gaps, and momentum in beautiful, motivating charts." },
     { icon: BookOpen, title: "Unlimited Practice", desc: "AI-generated questions tuned to your level — never the same quiz twice." },
     { icon: Trophy, title: "Real Achievements", desc: "XP, levels, streaks and milestones designed to motivate — not distract." },
-    { icon: Sparkles, title: "Smart Study Plans", desc: "Tell coretex your exam date. It builds the path to get you there." },
+    { icon: Sparkles, title: "Smart Study Plans", desc: "Tell Coretex AI your exam date. It builds the path to get you there." },
   ];
   return (
     <section id="features" className="py-24 md:py-32">
@@ -240,8 +240,8 @@ function Features() {
 
 function HowItWorks() {
   const steps = [
-    { n: "01", title: "Tell coretex about you", desc: "Pick your level, subjects, and goals. Take a quick diagnostic so the AI understands where you really are." },
-    { n: "02", title: "Learn your way", desc: "coretex explains, asks, and reframes until it clicks. Practice with instant feedback on every answer." },
+    { n: "01", title: "Tell Coretex AI about you", desc: "Pick your level, subjects, and goals. Take a quick diagnostic so the AI understands where you really are." },
+    { n: "02", title: "Learn your way", desc: "Coretex AI explains, asks, and reframes until it clicks. Practice with instant feedback on every answer." },
     { n: "03", title: "Remember forever", desc: "Smart revision keeps knowledge alive. Watch your retention score climb week after week." },
   ];
   return (
@@ -250,7 +250,7 @@ function HowItWorks() {
         <div className="relative">
           <img
             src={studentLearning}
-            alt="Student learning with coretex"
+            alt="Student learning with Coretex AI"
             loading="lazy"
             width={1024}
             height={1280}
@@ -294,7 +294,7 @@ function Showcase() {
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-6">
         <div className="rounded-3xl bg-gradient-to-br from-primary/10 via-card to-card border border-border p-10 overflow-hidden relative">
           <div className="text-sm font-semibold text-primary mb-3">PERSONALIZED</div>
-          <h3 className="text-3xl font-bold mb-3">A different coretex for every student.</h3>
+          <h3 className="text-3xl font-bold mb-3">A different Coretex AI for every student.</h3>
           <p className="text-muted-foreground mb-6 max-w-md">
             Difficulty, pacing, examples, even the tone of feedback — all shaped around how you learn.
           </p>
@@ -329,7 +329,7 @@ function Showcase() {
 
 function Testimonials() {
   const items = [
-    { name: "Ama K.", role: "Form 3 Student", quote: "I used to hate revising. coretex makes it feel like a game — and I'm finally remembering things." },
+    { name: "Ama K.", role: "Form 3 Student", quote: "I used to hate revising. Coretex AI makes it feel like a game — and I'm finally remembering things." },
     { name: "Daniel O.", role: "SHS Final Year", quote: "It's like having a teacher who never gets tired of my questions. My math grade jumped a full level." },
     { name: "Priya S.", role: "University Prep", quote: "The spaced repetition is unreal. Topics I learned a month ago still feel fresh." },
   ];
@@ -383,7 +383,7 @@ function CTA() {
               Join thousands of students who've made studying personal again.
             </p>
             <button className="inline-flex items-center gap-2 h-13 px-8 py-4 rounded-full bg-background text-foreground font-semibold hover:scale-[1.03] transition-transform shadow-soft">
-              Start Learning with coretex <ArrowRight className="w-4 h-4" />
+              Start Learning with Coretex AI <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -400,7 +400,7 @@ function Footer() {
           <div className="w-8 h-8 rounded-lg bg-gradient-primary grid place-items-center">
             <Brain className="w-4 h-4 text-primary-foreground" strokeWidth={2.5} />
           </div>
-          <span className="font-display font-bold">coretex</span>
+          <span className="font-display font-bold">Coretex AI</span>
           <span className="text-sm text-muted-foreground ml-2">© 2026</span>
         </div>
         <p className="text-sm text-muted-foreground">Built to help every student learn deeply.</p>

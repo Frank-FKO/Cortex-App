@@ -81,8 +81,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Coretex  AI– AI Learning Companion" },
       { name: "description", content: "Coretex AI is an AI-powered personalized learning platform that adapts to every student's pace and learning style." },
-      { name: "author", content: "coretex" },
-      { property: "og:site_name", content: "coretex" },
+      { name: "author", content: "Coretex AI" },
+      { property: "og:site_name", content: "Coretex AI" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
@@ -109,7 +109,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "coretex",
+          name: "Coretex AI",
           url: "https://aicoretex.lovable.app",
           logo: "https://aicoretex.lovable.app/favicon.ico",
           description: "AI-powered adaptive learning companion for students.",
@@ -120,7 +120,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
-          name: "coretex",
+          name: "Coretex AI",
           url: "https://aicoretex.lovable.app",
         }),
       },

@@ -5,7 +5,7 @@ import { PageContainer, PageHeader, EmptyState } from "@/lib/page-utils";
 import { GraduationCap, Plus, CheckCircle2, Clock } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/lessons")({
-  head: () => ({ meta: [{ title: "Lessons — coretex" }, { name: "description", content: "AI-generated lessons tailored to your subjects and learning pace." }, { name: "robots", content: "noindex,nofollow" }] }),
+  head: () => ({ meta: [{ title: "Lessons — Coretex AI" }, { name: "description", content: "AI-generated lessons tailored to your subjects and learning pace." }, { name: "robots", content: "noindex,nofollow" }] }),
   component: LessonsPage,
 });
 
@@ -39,7 +39,7 @@ function LessonsPage() {
         <EmptyState
           icon={<GraduationCap className="w-7 h-7" />}
           title="No lessons yet"
-          description="Tell coretex a topic and it will craft a lesson that adapts to your level."
+          description="Tell Coretex AI a topic and it will craft a lesson that adapts to your level."
           action={
             <button className="inline-flex items-center gap-2 h-10 px-5 rounded-full bg-gradient-primary text-primary-foreground text-sm font-semibold shadow-soft">
               <Plus className="w-4 h-4" /> Create your first lesson
