@@ -92,6 +92,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:description", content: "Coretex AI is an AI-powered personalized learning platform that adapts to every student's pace and learning style." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/c56feef1-d9ee-4e7b-986f-be7dd66e2413" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/c56feef1-d9ee-4e7b-986f-be7dd66e2413" },
+      { name: "google-site-verification", content: "s4kQ5Dca34xA9qH01cohNNvO4d9Y4Hv3rxz8e_23aZw" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
